@@ -40,8 +40,8 @@ THREAD ?= 2
 
 SYS_VAR = -DMULTI_THREAD=$(MT) -DTHREAD_NUM=$(THREAD) -DCCS16=$(CCS) -DLIVE_TRAFFIC=$(LIVE) -DSTATE_MGMT=$(STATE) -DLOG_THRESHOLD=$(LOG)
 
-SGXSSL_LIB_PATH = sgxssl/lib64/release
-SGXSSL_INCLUDE_PATH = sgxssl/include
+SGXSSL_LIB_PATH = /opt/intel/sgxssl/lib64
+SGXSSL_INCLUDE_PATH = /opt/intel/sgxssl/include
 
 ######## SGX SDK Settings ########
 
@@ -147,7 +147,7 @@ Enclave_Link_Flags := $(SGX_COMMON_CFLAGS) -Wl,--no-undefined -nostdlib -nodefau
 	-Wl,--whole-archive -l$(Trts_Library_Name) -Wl,--no-whole-archive \
 	-Wl,--start-group -lsgx_tstdc -lsgx_tcxx -l$(Crypto_Library_Name) -l$(Service_Library_Name) \
 	-Wl,--whole-archive -lsgx_tsgxssl \
-	-Wl,--no-whole-archive -lsgx_tsgxssl_crypto -lsgx_tsetjmp \
+	-Wl,--no-whole-archive -lsgx_tsgxssl_crypto \
 	-Wl,--end-group \
 	-Wl,-Bstatic -Wl,-Bsymbolic -Wl,--no-undefined \
 	-Wl,-pie,-eenclave_entry -Wl,--export-dynamic  \

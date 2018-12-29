@@ -4,7 +4,7 @@ enclave {
 	// Import the Ocalls for trusted mutex
 	//from "sgx_tstdc.edl" import *;
 
-	from "../sgxssl/include/sgx_tsgxssl.edl" import *;
+	from "/opt/intel/sgxssl/include/sgx_tsgxssl.edl" import *;
 
     trusted {
 		public void ecall_init([user_check]int *log_switch,
